@@ -1,1 +1,1 @@
-# predixci-golang1.11
+# docker-predix

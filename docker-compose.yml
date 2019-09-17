@@ -1,0 +1,66 @@
+version: "3.6"
+
+services:
+  predix-dev:
+    image: asperitus/predix
+    container_name: predix-dev
+    command: tail -f /dev/null
+    env_file: bash_env.sh
+    ports:
+      - "58080:8080"
+    volumes:
+      - "${WORK_ROOT}:/work"
+    depends_on:
+      - "predix-cache"
+      - "postgres-2.0"
+      - "predix-blobstore"
+    networks:
+      - predix-net
+
+  predix-cache:
+    image: redis:3.2
+    container_name: predix-cache
+    command: redis-server --requirepass password
+    ports:
+      - "56379:6379"
+    volumes:
+      - "redis-data:/data"
+    networks:
+      - predix-net
+
+  postgres-2.0:
+    image: postgres:9.4
+    container_name: predix-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=secret88
+    ports:
+      - "55432:5432"
+    volumes:
+      - "pg-data:/var/lib/postgresql/data"
+    networks:
+      - predix-net
+
+  predix-blobstore:
+    image: minio/minio:latest
+    command: minio server /data
+    container_name: predix-blobstore
+    environment:
+      - MINIO_ACCESS_KEY=ac3
+      - MINIO_SECRET_KEY=secret88
+    ports:
+      - "59000:9000"
+    volumes:
+      - "blob-data:/data"
+    networks:
+      predix-net:
+        aliases:
+          - bucket.predix-blobstore
+
+volumes:
+  redis-data:
+  pg-data:
+  blob-data:
+
+networks:
+  predix-net:
