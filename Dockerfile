@@ -35,15 +35,6 @@ RUN apt-get update && apt-get -y install \
 
 ####
 
-#Oracle Java 8
-RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu $(lsb_release -sc) main" >> /etc/apt/sources.list \
-    && apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys EEA14886 \
-    && echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-        oracle-java8-installer \
-        oracle-java8-set-default
-
 #Google Chrome
 RUN wget -q -O - http://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list \
