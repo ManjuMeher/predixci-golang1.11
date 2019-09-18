@@ -63,7 +63,6 @@ RUN npm install --prefix /usr/local --unsafe-perm -g \
 
 #Golang
 RUN curl --insecure -L "https://dl.google.com/go/go1.10.1.linux-amd64.tar.gz" | tar -C /usr/local -xz
-ENV GOBIN $GOPATH/bin
 
 #Cloud Foundry client
 RUN curl --insecure -L "https://cli.run.pivotal.io/stable?release=linux64-binary&source=github" | tar -C /usr/local/bin -xz
