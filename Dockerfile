@@ -129,6 +129,8 @@ ENV USER vcap
 ENV HOME /home/vcap/app
 ENV PATH /app/bin:/usr/local/go/bin:/app/vendor/R/bin:$PATH
 ENV TMPDIR /home/vcap/tmp
+ENV GOPATH /usr/local/go/
+ENV GOBIN /usr/local/go/bin
 
 WORKDIR $HOME
 #
