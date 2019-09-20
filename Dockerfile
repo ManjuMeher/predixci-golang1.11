@@ -130,7 +130,7 @@ ENV HOME /home/vcap/app
 ENV PATH /app/bin:/usr/local/go/bin:/app/vendor/R/bin:$PATH
 ENV TMPDIR /home/vcap/tmp
 ENV GOBIN /usr/local/go/bin
-ENV GOPATH /go
+ENV GOPATH /usr/local/workspace
 
 WORKDIR $HOME
 #
