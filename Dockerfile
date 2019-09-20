@@ -130,11 +130,9 @@ ENV HOME /home/vcap/app
 ENV PATH /app/bin:/usr/local/go/bin:/app/vendor/R/bin:$PATH
 ENV TMPDIR /home/vcap/tmp
 ENV GOBIN /usr/local/go/bin
-ENV GOPATH /usr/local/workspace
+ENV GOPATH /usr/local
 
 WORKDIR $HOME
-#
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 
 #
 CMD ["/bin/bash"]
