@@ -127,9 +127,10 @@ USER vcap
 ENV PORT 8080
 ENV USER vcap
 ENV HOME /home/vcap/app
-ENV PATH /app/bin:/usr/local/go/bin:/app/vendor/R/bin:$PATH
+ENV PATH /app/bin:/usr/local/go/bin:/app/vendor/R/bin:/usr/local/bin:$PATH
 ENV TMPDIR /home/vcap/tmp
 ENV GOBIN /usr/local/go/bin
+ENV GOPATH /usr/local/
 
 WORKDIR $HOME
 
